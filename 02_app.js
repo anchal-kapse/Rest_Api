@@ -2,14 +2,10 @@ require('dotenv').config()
 
 const express = require('express')
 
-
-
 const app = express()
 
-
 const ProductRouter = require('./03_api/route/01_products')
-
-
+const OrderRouter = require('./03_api/route/01_orders')
 
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
@@ -32,5 +28,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json({ extended: true }))
 app.use(morgan("dev")) //dev is one of the pre-defined format for morgan
 app.use('/products', ProductRouter)
+app.use('/orders', OrderRouter)
 
 module.exports = app
